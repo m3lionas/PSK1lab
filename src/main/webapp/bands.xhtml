@@ -13,13 +13,13 @@
             <li>#{band.name}</li>
         </ui:repeat>
     </ol>
-    <h2>All bands:</h2>
+    <h3>Add band to #{bandsForFestival.festival.name} festival:</h3>
     <h:form>
         <h:selectOneMenu id="input" value="#{bandsForFestival.bandToAddId}">
             <f:selectItems value="#{bands.allBands}" var="i" itemValue="#{i.id}" itemLabel="#{i.name}" />
         </h:selectOneMenu>
 
-        <h:commandButton value="Add band to this festival" action="#{bandsForFestival.addBandToFestival}" >
+        <h:commandButton value="Add" action="#{bandsForFestival.addBandToFestival}" >
             <f:param name="festivalId" value="#{bandsForFestival.festival.id}" />
         </h:commandButton>
     </h:form>
