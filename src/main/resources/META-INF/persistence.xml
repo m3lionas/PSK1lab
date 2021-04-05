@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="FestivalsPU" transaction-type="JTA">
+        <jta-data-source>FestivalsDataSource</jta-data-source>
+        <class>lt.vu.PSK1lab.entities.Band</class>
+        <class>lt.vu.PSK1lab.entities.Festival</class>
+        <class>lt.vu.PSK1lab.entities.Member</class>
+        <properties>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="toplink.jdbc.url" value="jdbc:h2:~/h2database/FestivalDB;AUTO_SERVER=TRUE"/>
+            <property name="toplink.jdbc.driver" value="org.h2.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:h2:~/h2database/FestivalDB;AUTO_SERVER=TRUE"/>
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:h2:~/h2database/FestivalDB;AUTO_SERVER=TRUE"/>
+            <property name="openjpa.ConnectionDriverName" value="org.h2.Driver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:h2:~/h2database/FestivalDB;AUTO_SERVER=TRUE"/>
+            <property name="eclipselink.jdbc.driver" value="org.h2.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

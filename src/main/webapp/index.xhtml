@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Festivals:</h2>
+    <ol>
+        <ui:repeat value="#{festivals.allFestivals}" var="festival">
+            <li><h:link value="#{festival.name}" outcome="bands?festivalId=#{festival.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{festivals.festivalToCreate.name}" required="true" />
+        <h:commandButton value="Add a new festival" action="#{festivals.createFestival}" />
+    </h:form>
+    <h:link outcome="mybatis/festivals" value="MyBatis implementation"/>
+</h:body>
+</html>
