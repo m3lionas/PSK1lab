@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,10 +12,13 @@ import java.util.Set;
 @NamedQueries({
         @NamedQuery(name = "Festival.findAll", query = "select f from Festival as f")
 })
-public class Festival {
+@Table(name = "FESTIVAL")
+public class Festival implements Serializable {
     private Long id;
     private String name;
     private Set<Band> bands;
+    private Integer version;
+    private String state;
 
     @Id
     @GeneratedValue
@@ -39,6 +43,24 @@ public class Festival {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "STATE")
+    public String getState() {return state;}
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    @Version
+    @Column(name = "VERSION")
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     @Override

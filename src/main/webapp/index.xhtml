@@ -16,6 +16,13 @@
         <h:inputText value="#{festivals.festivalToCreate.name}" required="true" />
         <h:commandButton value="Add a new festival" action="#{festivals.createFestival}" />
     </h:form>
+
+    <h:form>
+        <h:outputText value="#{generateFestivalName.festivalNameGenerationStatus}" />
+        <h:commandButton value="Generate new festival name?" disabled="#{generateFestivalName.festivalNameGenerationRunning}" action="#{generateFestivalName.generateNewFestivalName}">
+        </h:commandButton>
+    </h:form>
+
     <h:link outcome="mybatis/festivals" value="MyBatis implementation"/>
 </h:body>
 </html>

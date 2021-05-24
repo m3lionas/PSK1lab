@@ -3,10 +3,13 @@ package lt.vu.PSK1lab.persistence;
 import lt.vu.PSK1lab.entities.Festival;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.RollbackException;
 import java.util.List;
 
+//@Default
 @ApplicationScoped
 public class FestivalsDAO {
 
@@ -24,7 +27,7 @@ public class FestivalsDAO {
         return em.find(Festival.class, id);
     }
 
-    public Festival update(Festival festival){
+    public Festival update(Festival festival) {
         return em.merge(festival);
     }
 }

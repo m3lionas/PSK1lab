@@ -34,7 +34,6 @@ public class Festivals {
     }
 
     private void loadAllFestivals(){
-        System.out.println("bazinga");
         this.allFestivals = festivalsDAO.loadAll();
     }
 }

@@ -7,6 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
+    <h2>Festival state: #{bandsForFestival.festival.state}</h2>
     <h2>Bands playing in #{bandsForFestival.festival.name} festival:</h2>
     <ol>
         <ui:repeat value="#{bandsForFestival.festival.bands}" var="band">
@@ -16,12 +17,31 @@
     <h3>Add band to #{bandsForFestival.festival.name} festival:</h3>
     <h:form>
         <h:selectOneMenu id="input" value="#{bandsForFestival.bandToAddId}">
-            <f:selectItems value="#{bands.allBands}" var="i" itemValue="#{i.id}" itemLabel="#{i.name}" />
+            <f:selectItems value="#{bandsForFestival.bandsNotInFestival}" var="i" itemValue="#{i.id}" itemLabel="#{i.name}" />
         </h:selectOneMenu>
 
         <h:commandButton value="Add" action="#{bandsForFestival.addBandToFestival}" >
             <f:param name="festivalId" value="#{bandsForFestival.festival.id}" />
         </h:commandButton>
+    </h:form>
+    <h3>Rename festival:</h3>
+    <h:form>
+        <h:outputText value="Festival name: "/>
+        <h:inputText a:placeholder="enter the value" value="#{updateFestivalDetails.festival.name}" required="true" />
+        <h:commandButton value="update" action="#{updateFestivalDetails.updateFestivalName}">
+            <f:param name="festivalId" value="#{updateFestivalDetails.festival.id}" />
+        </h:commandButton>
+    </h:form>
+    <h3>Change state of festival:</h3>
+    <h:form>
+        <h:selectOneMenu id="input1" value="#{festivalState.selectedState}">
+            <f:selectItems value="#{festivalState.states}" var="i" itemValue="#{i}" itemLabel="#{i}" />
+        </h:selectOneMenu>
+
+        <h:commandButton value="Select" action="#{festivalState.changeFestivalState}" >
+            <f:param name="festivalId" value="#{bandsForFestival.festival.id}" />
+        </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
     <h:link outcome="/index" value="Back to index"/>
 </h:body>

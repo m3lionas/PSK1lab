@@ -4,6 +4,14 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
-        bean-discovery-mode="annotated">
-
+        bean-discovery-mode="all">
+    <interceptors>
+        <class>lt.vu.PSK1lab.interceptors.MethodLogger</class>
+    </interceptors>
+    <decorators>
+        <class>lt.vu.PSK1lab.decorators.UpdateFestivalDetailsDecorator</class>
+    </decorators>
+    <alternatives>
+<!--        <class>lt.vu.PSK1lab.persistence.KeptFestivalsDAO</class>-->
+    </alternatives>
 </beans>

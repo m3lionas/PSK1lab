@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -57,6 +58,17 @@ public class BandsForFestival implements Serializable{
         festivalsDAO.update(this.festival);
         return "bands?faces-redirect=true&festivalId=" + this.festival.getId();
     }
-
-
+    
+    public List<Band> getBandsNotInFestival() {
+        List<Band> bandsNotInFestival = new ArrayList<Band>() {
+        };
+        for (Band band:
+             allBands) {
+            if (!this.festivalBands.contains(band))
+            {
+                bandsNotInFestival.add(band);
+            }
+        }
+        return bandsNotInFestival;
+    }
 }
